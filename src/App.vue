@@ -1,4 +1,5 @@
 <template>
+  <w-button>My Button</w-button>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
