@@ -7,6 +7,10 @@
   <router-view/>
 </template>
 
+<script setup>
+document.title = 'Выбор цвета -- Wave UI (Vue.js 3)'
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
