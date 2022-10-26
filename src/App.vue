@@ -1,10 +1,22 @@
 <template>
-  <w-button>My Button</w-button>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <w-app id="app" row>
+    <aside>
+      Nav menu
+      <nav>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+      </nav>
+    </aside>
+    <w-flex column>
+      <header>Header</header>
+      <main class="grow">
+        Main content
+        <router-view/>
+      </main>
+      <footer>Footer</footer>
+    </w-flex>
+  </w-app>
+
 </template>
 
 <script setup>
@@ -12,24 +24,16 @@ document.title = 'Выбор цвета -- Wave UI (Vue.js 3)'
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+/* Demo styles - can be discarded. */
+.w-app {padding: 4px;background-color: #fffeed;}
+header, footer, aside, main {
+  margin: 4px;
+  padding: 12px;
+  text-transform: uppercase;
+  color: #666;
+  border: 1px solid rgba(0, 0, 0, 0.07);
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+header, footer {background-color: #e9f8fe;min-height: 60px;}
+aside {background-color: #fef2ff;}
+main {background-color: #efffed;}
 </style>
