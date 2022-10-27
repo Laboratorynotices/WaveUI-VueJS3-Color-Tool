@@ -19,8 +19,6 @@ import MainStandardLayout from '@/layouts/MainStandardLayout.vue'
 import FooterStandardLayout from '@/layouts/FooterStandardLayout.vue'
 
 import ScrollToTopButton from '@/components/ScrollToTopButton.vue'
-
-document.title = 'Выбор цвета -- Wave UI (Vue.js 3)'
 </script>
 
 <style>

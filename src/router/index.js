@@ -4,7 +4,13 @@ import HomeView from '../views/HomeView.vue'
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'randomColor',
+    component: () => import('../views/RandomColorView.vue'),
+    meta: { title: 'Random Colors' }
+  },
+  {
+    path: '/home',
+    name: 'homeOld',
     component: HomeView
   },
   {
@@ -20,6 +26,13 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   routes
+})
+
+// Добавляем мета-заголовок странички
+router.beforeEach((to, from, next) => {
+  document.title = ((to.meta.title) ? to.meta.title + ' -- ' : '') + 'Wave UI (Vue.js 3)'
+
+  next()
 })
 
 export default router

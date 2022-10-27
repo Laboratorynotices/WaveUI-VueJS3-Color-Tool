@@ -1,6 +1,7 @@
 <template>
     <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link :to="{name: 'randomColor'}">Random Colors</router-link> |
+        <router-link :to="{name: 'homeOld'}">Home</router-link> |
+        <router-link :to="{name: 'about'}">About</router-link>
     </nav>
 </template>
