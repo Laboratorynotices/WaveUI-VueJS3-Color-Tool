@@ -8,6 +8,7 @@
             <MainStandardLayout />
             <FooterStandardLayout />
         </w-flex>
+        <ScrollToTopButton />
     </w-app>
 </template>
 
@@ -16,6 +17,8 @@ import NavStandardLayout from '@/layouts/NavStandardLayout.vue'
 import HeaderStandardLayout from '@/layouts/HeaderStandardLayout.vue'
 import MainStandardLayout from '@/layouts/MainStandardLayout.vue'
 import FooterStandardLayout from '@/layouts/FooterStandardLayout.vue'
+
+import ScrollToTopButton from '@/components/ScrollToTopButton.vue'
 
 document.title = 'Выбор цвета -- Wave UI (Vue.js 3)'
 </script>
