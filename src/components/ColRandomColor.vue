@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import ButtonColRandomColor from '@/components/ButtonColRandomColor.vue'
 
 /**
  * Функция по генерации кода цвета для столбцов
@@ -25,13 +26,17 @@ const generateRandomColor = () => {
 // Тут будем хранить сгенерированный цвет, поскольку его использовать будем несколько раз
 const generatedColor = ref(generateRandomColor())
 
+// Заблокирован ли цвет для изменения
+const colorLocked = ref(false)
+
 /**
  * При нажатии на клавишу пробела будет меняться цвет
  * @param {*} e - event
  */
 const keydownListener = (e) => {
   // Функция должна реагировать на клавишу пробела в независимости от системы
-  if (e.code.toLowerCase() === 'space') {
+  if (e.code.toLowerCase() === 'space' &&
+      !colorLocked.value) {
     // Обновляем цветовой код
     generatedColor.value = generateRandomColor()
   }
@@ -49,11 +54,18 @@ onUnmounted(() => {
   document.removeEventListener('keydown', keydownListener)
 })
 
+/**
+ * Переключает значение флага между открытым и закрытым,
+ * вызывается из дочернего компонента.
+ */
+const touchColorLocked = () => {
+  colorLocked.value = !colorLocked.value
+}
 </script>
 
 <template>
     <w-flex column align-center justify-space-evenly :style="{ 'background-color': generatedColor }">
-        <h2>{{ generatedColor }}</h2>
-        <button>lock</button>
+        <h1>{{ generatedColor }}</h1>
+        <ButtonColRandomColor :colorLocked="colorLocked" @touch-color-locked="touchColorLocked" />
     </w-flex>
 </template>
