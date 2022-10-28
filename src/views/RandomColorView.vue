@@ -1,4 +1,12 @@
+<script setup>
+import ColRandomColor from '@/components/ColRandomColor.vue'
+
+// Количество столбцов
+const colCount = 5
+</script>
+
 <template>
-    <h1>RandomColorView</h1>
-    {{ $router.currentRoute.value.meta.title }}
+    <w-grid :columns="colCount">
+        <ColRandomColor v-for="i in colCount" :key="i">{{ i }}</ColRandomColor>
+    </w-grid>
 </template>
