@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+
 /**
  * Функция по генерации кода цвета для столбцов
  */
@@ -21,7 +23,31 @@ const generateRandomColor = () => {
 }
 
 // Тут будем хранить сгенерированный цвет, поскольку его использовать будем несколько раз
-const generatedColor = generateRandomColor()
+const generatedColor = ref(generateRandomColor())
+
+/**
+ * При нажатии на клавишу пробела будет меняться цвет
+ * @param {*} e - event
+ */
+const keydownListener = (e) => {
+  // Функция должна реагировать на клавишу пробела в независимости от системы
+  if (e.code.toLowerCase() === 'space') {
+    // Обновляем цветовой код
+    generatedColor.value = generateRandomColor()
+  }
+}
+
+// Лайфхук при генерации сайта
+onMounted(() => {
+  // Добавляем "слушателя" на нажатие клавиш
+  document.addEventListener('keydown', keydownListener)
+})
+
+// Лайфхук при уничтожении страницы
+onUnmounted(() => {
+  // Удаляем "слушателя" на нажатие клавиш
+  document.removeEventListener('keydown', keydownListener)
+})
 
 </script>
 
