@@ -24,7 +24,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton.vue'
 <style>
 /* Demo styles - can be discarded. */
 .w-app {padding: 4px;background-color: #fffeed;}
-header, footer, aside, main {
+header, footer, aside {
   margin: 4px;
   padding: 12px;
   text-transform: uppercase;
@@ -33,5 +33,4 @@ header, footer, aside, main {
 }
 header, footer {background-color: #e9f8fe;min-height: 60px;}
 aside {background-color: #fef2ff;}
-main {background-color: #efffed;}
 </style>
