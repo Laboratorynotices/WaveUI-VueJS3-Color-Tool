@@ -6,7 +6,7 @@ const colCount = 5
 </script>
 
 <template>
-    <w-grid :columns="colCount">
+    <w-flex class="row fill-height fill-width">
         <ColRandomColor v-for="i in colCount" :key="i">{{ i }}</ColRandomColor>
-    </w-grid>
+    </w-flex>
 </template>
