@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
+import CaptionColRandomColor from '@/components/CaptionColRandomColor.vue'
 import ButtonColRandomColor from '@/components/ButtonColRandomColor.vue'
 
 /**
@@ -65,7 +66,7 @@ const touchColorLocked = () => {
 
 <template>
     <w-flex column align-center justify-space-evenly :style="{ 'background-color': generatedColor }">
-        <h1>{{ generatedColor }}</h1>
+        <CaptionColRandomColor :generatedColor="generatedColor" />
         <ButtonColRandomColor :colorLocked="colorLocked" @touch-color-locked="touchColorLocked" />
     </w-flex>
 </template>
