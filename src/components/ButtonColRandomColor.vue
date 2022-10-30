@@ -25,7 +25,7 @@ const childTouchColorLocked = (e) => {
 </script>
 
 <template>
-  <button @click="childTouchColorLocked">
+  <w-button @click="childTouchColorLocked" >
     {{ (colorLocked) ? 'locked' : 'unlocked' }}
-  </button>
+  </w-button>
 </template>
