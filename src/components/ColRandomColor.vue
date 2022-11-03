@@ -1,7 +1,11 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+import { defineProps, onMounted, onUnmounted, ref } from 'vue'
 import CaptionColRandomColor from '@/components/CaptionColRandomColor.vue'
 import ButtonColRandomColor from '@/components/ButtonColRandomColor.vue'
+
+const props = defineProps({
+  color: String // код цвета
+})
 
 /**
  * Функция по генерации кода цвета для столбцов
@@ -25,10 +29,10 @@ const generateRandomColor = () => {
 }
 
 // Тут будем хранить сгенерированный цвет, поскольку его использовать будем несколько раз
-const generatedColor = ref(generateRandomColor())
+const generatedColor = ref((props.color) ? props.color : generateRandomColor())
 
 // Заблокирован ли цвет для изменения
-const colorLocked = ref(false)
+const colorLocked = ref(!!props.color)
 
 /**
  * При нажатии на клавишу пробела будет меняться цвет
@@ -58,9 +62,28 @@ onUnmounted(() => {
 /**
  * Переключает значение флага между открытым и закрытым,
  * вызывается из дочернего компонента.
+ * А так же исправляет адрес странички, чтобы можно было поделиться цветом
  */
 const touchColorLocked = () => {
+  // Изменяем значение флага
   colorLocked.value = !colorLocked.value
+  // Удаляем из сточки кода цвета первый символ '#', который помешает браузеру
+  const colorCode = generatedColor.value.toString().substring(1)
+
+  // Разделяем хеш страницы на части
+  const documentLocationHashArray = document.location.hash.split('/')
+
+  const colorCodeHash = documentLocationHashArray[2].replaceAll('-', ' ')
+
+  documentLocationHashArray[2] =
+    // Определяем надо ли добавить или удалить код цвета
+    ((colorLocked.value)
+      // добавляем код к строчке
+      ? colorCodeHash + ' ' + colorCode
+      // удаляем код из строчки
+      : colorCodeHash.replace(colorCode, '')).trim().replace('  ', ' ').replaceAll(' ', '-')
+
+  document.location.hash = documentLocationHashArray.join('/')
 }
 </script>
 

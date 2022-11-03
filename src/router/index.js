@@ -3,9 +3,10 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/:columns?/:colors?',
     name: 'randomColor',
     component: () => import('../views/RandomColorView.vue'),
+    props: true,
     meta: { title: 'Random Colors' }
   },
   {
