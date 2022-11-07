@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkwave_ui_vue3_color_tool"]=self["webpackChunkwave_ui_vue3_color_tool"]||[]).push([[443],{7381:function(u,e,n){n.r(e),n.d(e,{default:function(){return _}});var o=n(3396);const t={class:"about"},a=(0,o._)("h1",null,"This is an about page",-1),r=[a];function c(u,e){return(0,o.wg)(),(0,o.iD)("div",t,r)}var s=n(89);const i={},l=(0,s.Z)(i,[["render",c]]);var _=l}}]);
-//# sourceMappingURL=about.b44ce1ef.js.map
+//# sourceMappingURL=about.89e3c37f.js.map
